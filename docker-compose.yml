@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+
+  web:
+    image: wtr/web
+    build:
+      context: .
+    volumes:
+      - ./app:/var/www/html
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/pub
+    ports:
+      - 80:80
+
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "toor"
+    volumes:
+      - ./docker/postgres-data:/var/lib/postgresql/data
+
+  composer:
+    image: composer/composer
+    command: install
+    volumes:
+      - ./app:/app

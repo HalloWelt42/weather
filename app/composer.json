@@ -1,0 +1,8 @@
+{
+  "name": "hallowelt42/wtr",
+  "autoload": {
+    "psr-4": {
+      "WTR\\": "src/"
+    }
+  }
+}
